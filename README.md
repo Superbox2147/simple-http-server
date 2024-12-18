@@ -15,9 +15,9 @@
 
 
 **`.env` configuration:**
-`.env` is the main configuration file, formatted as plain text
-Each line in .env starts with a key, which is the name of a setting, formatted as all uppercase, with no spaces (example: PORT_OVERRIDE)
-Each key should be followed by =
-Each = should be followed by a value, here are the supported keys for the current version and what they do:
-INITIAL_PATH, default value INITIAL_PATH = "index.html", the name of the file to open in the browser by default
-PORT_OVERRIDE, no default value, integer to override the port if you want to use a port different from 7272
+- `.env` is the main configuration file, formatted as plain text
+- Each line in .env starts with a key, which is the name of a setting, formatted as all uppercase, with no spaces (example: PORT_OVERRIDE)
+- Each key should be followed by =
+- Each = should be followed by a value, here are the supported keys for the current version and what they do:
+- INITIAL_PATH, default value INITIAL_PATH = "index.html", the name of the file to open in the browser by default
+- PORT_OVERRIDE, no default value, integer to override the port if you want to use a port different from 7272
