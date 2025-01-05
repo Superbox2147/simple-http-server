@@ -43,7 +43,7 @@ class FilesystemRedirectHandler : HttpHandler {
             }
 
             val path = exchange.requestURI.path!!
-            val file = File("./${path.removePrefix("/")}")
+            val file = File(check("./${path.removePrefix("/")}"))
 
             if (!file.exists()) {
                 println("File not found: $path")
@@ -71,9 +71,22 @@ class FilesystemRedirectHandler : HttpHandler {
             e.printStackTrace()
             exchange.sendResponseHeaders(500, 0)
             exchange.responseBody.close()
+        } catch (e: InsecurePathException) {
+            exchange.sendResponseHeaders(400, 0)
+            exchange.responseBody.close()
         }
     }
+
+    //some sort of security check? Just putting it in there
+    private fun check(path: String): String {
+        if (path.split("/../").size > 1) {
+            throw InsecurePathException()
+        }
+        return path
+    }
 }
+
+class InsecurePathException : Exception()
 
 //environment variable endpoint, designed to be used to get the URL for the Neuro API websocket
 class EnvGet : HttpHandler {

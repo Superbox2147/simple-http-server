@@ -4,12 +4,13 @@ plugins {
 }
 
 group = "org.whatever"
-version = "1.0-SNAPSHOT"
+version = "1.0"
 
 repositories {
     mavenCentral()
 }
-application{
+
+application {
     mainClass="org.whatever.MainKt"
 }
 
@@ -28,4 +29,8 @@ kotlin {
 runtime {
     options.addAll("--strip-debug", "--compress", "2", "--no-header-files", "--no-man-pages")
     modules.addAll("java.net.http","jdk.httpserver","java.desktop")
+    jpackage{
+        //disable installer
+        skipInstaller = true
+    }
 }
